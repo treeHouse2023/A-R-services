@@ -1,0 +1,233 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight, UtensilsCrossed, Coffee, ChefHat, ClipboardList, Users, Headphones } from "lucide-react";
+import HeroSection from "@/components/HeroSection";
+import StatsSection from "@/components/StatsSection";
+import ServiceCard from "@/components/ServiceCard";
+import ProjectCard from "@/components/ProjectCard";
+import SectionHeading from "@/components/SectionHeading";
+
+import projectCafe from "@/assets/project-cafe.jpg";
+import projectHotel from "@/assets/project-hotel.jpg";
+import projectRestaurant from "@/assets/project-restaurant.jpg";
+
+const services = [
+  {
+    icon: UtensilsCrossed,
+    title: "Restaurant Setup",
+    description: "Complete end-to-end restaurant launch services from concept to opening day.",
+  },
+  {
+    icon: Coffee,
+    title: "Café Consultancy",
+    description: "Premium café design, menu development, and operational excellence.",
+  },
+  {
+    icon: ChefHat,
+    title: "Hotel Kitchen Planning",
+    description: "Commercial kitchen design and workflow optimization for hotels.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Menu Engineering",
+    description: "Strategic menu design for maximum profitability and guest satisfaction.",
+  },
+  {
+    icon: Users,
+    title: "SOP & Staff Training",
+    description: "Comprehensive training programs and standard operating procedures.",
+  },
+  {
+    icon: Headphones,
+    title: "Pre & Post Opening Support",
+    description: "Continuous support before, during, and after your launch.",
+  },
+];
+
+const featuredProjects = [
+  {
+    image: projectRestaurant,
+    name: "The Golden Fork",
+    location: "Mumbai, Maharashtra",
+    type: "Fine Dining",
+    role: "Full Setup",
+  },
+  {
+    image: projectCafe,
+    name: "Brew & Bean Café",
+    location: "Bangalore, Karnataka",
+    type: "Premium Café",
+    role: "Menu & SOP",
+  },
+  {
+    image: projectHotel,
+    name: "Grand Orchid Hotel",
+    location: "Delhi NCR",
+    type: "Hotel Kitchen",
+    role: "Kitchen Planning",
+  },
+];
+
+const Home = () => {
+  return (
+    <>
+      {/* Hero */}
+      <HeroSection />
+
+      {/* About Snapshot */}
+      <section className="section-padding bg-gradient-cream">
+        <div className="container mx-auto container-padding">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-accent font-medium tracking-widest text-sm uppercase mb-4">
+                About Us
+              </p>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
+                Transforming Culinary Visions Into Successful Ventures
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                A.R FOODS – Culinary Solutions is a premier hospitality consultancy firm with over a decade of experience in building profitable restaurants, cafés, and hotel kitchens across India. Our expertise spans from concept development to full operational launch.
+              </p>
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                <div>
+                  <p className="text-3xl font-serif font-bold text-accent">10+</p>
+                  <p className="text-muted-foreground text-sm">Years of Excellence</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-serif font-bold text-accent">Pan India</p>
+                  <p className="text-muted-foreground text-sm">Operations Network</p>
+                </div>
+              </div>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all"
+              >
+                Learn More About Us
+                <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <img
+                src={projectRestaurant}
+                alt="Premium restaurant interior"
+                className="rounded-lg shadow-elegant w-full"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-lg shadow-gold">
+                <p className="text-3xl font-serif font-bold">50+</p>
+                <p className="text-sm">Outlets Launched</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Overview */}
+      <section className="section-padding">
+        <div className="container mx-auto container-padding">
+          <SectionHeading
+            subtitle="Our Services"
+            title="Comprehensive Hospitality Solutions"
+            description="From concept to launch, we provide end-to-end consultancy services tailored to your unique vision."
+          />
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <ServiceCard key={service.title} {...service} index={index} />
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition-all"
+            >
+              View All Services
+              <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <StatsSection />
+
+      {/* Featured Projects */}
+      <section className="section-padding bg-secondary">
+        <div className="container mx-auto container-padding">
+          <SectionHeading
+            subtitle="Our Work"
+            title="Featured Projects"
+            description="Explore some of our successful restaurant and hospitality projects across India."
+          />
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredProjects.map((project, index) => (
+              <ProjectCard key={project.name} {...project} index={index} />
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all"
+            >
+              View All Projects
+              <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-padding bg-primary">
+        <div className="container mx-auto container-padding text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary-foreground mb-6">
+              Let's Build Your Next{" "}
+              <span className="text-gradient-gold">Restaurant</span>
+            </h2>
+            <p className="text-primary-foreground/70 text-lg mb-8">
+              Ready to transform your culinary vision into a thriving business? Let's discuss your project.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-accent-foreground font-semibold rounded-md hover:opacity-90 transition-all shadow-gold"
+            >
+              Book a Consultation
+              <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Home;
