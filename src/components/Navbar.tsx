@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/Favicon-tras-gold.png";
+
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -20,11 +22,27 @@ const Navbar = () => {
       <nav className="container mx-auto container-padding">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl font-serif font-bold tracking-tight text-foreground">
-              A.R <span className="text-gradient-gold">FOODS</span>
-            </span>
-          </Link>
+<Link
+  to="/"
+  className="flex items-center gap-3"
+>
+  {/* Logo Image */}
+  <img
+    src={logo}
+    alt="A.R Foods Logo"
+    className="w-12 h-12 object-contain mt-1 mr-1"
+  />
+
+  {/* Brand Text */}
+  <div className="flex flex-col leading-none text-center">
+    <span className="text-2xl font-serif font-bold tracking-tight text-foreground">
+      A.R <span className="text-gradient-gold">FOODS</span>
+    </span>
+    <span className="text-xs md:text-sm font-serif tracking-wide text-foreground/70">
+      Culinary Solutions
+    </span>
+  </div>
+</Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">

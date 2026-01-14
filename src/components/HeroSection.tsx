@@ -6,7 +6,7 @@ import heroImage from "@/assets/hero-restaurant.jpg";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+     
       <div className="absolute inset-0">
         <img
           src={heroImage}
@@ -16,27 +16,37 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40" />
       </div>
 
-      {/* Content */}
+      
       <div className="relative container mx-auto container-padding pt-20">
         <div className="max-w-3xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-accent font-medium tracking-widest text-sm uppercase mb-6"
-          >
-            A.R FOODS – Culinary Solutions
-          </motion.p>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground leading-tight mb-6"
-          >
-            End-to-End Hospitality & Culinary{" "}
-            <span className="text-gradient-gold">Consultancy</span>
-          </motion.h1>
+    
+<motion.h1
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  className="font-serif font-extrabold uppercase
+             tracking-wide text-accent
+             leading-tight mb-4
+             text-2xl md:text-3xl lg:text-5xl"
+>
+  A.R FOODS – Premium Café & Culinary Solutions
+
+</motion.h1>
+
+
+<motion.h1
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.1 }}
+  className="font-serif font-bold text-primary-foreground
+             leading-tight mb-6
+             text-3xl md:text-4xl lg:text-4xl"
+>
+  End-to-End Hospitality & Culinary{" "}
+  <span className="text-gradient-gold">
+    Consultancy
+  </span>
+</motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -44,7 +54,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-primary-foreground/80 mb-10 leading-relaxed max-w-2xl"
           >
-            We build profitable restaurants, premium cafés & hotel kitchens across India. Transform your culinary vision into a thriving business.
+            We build profitable restaurants, premium cafés, QSR's & hotel kitchens across India. Transform your culinary vision into a thriving business.
           </motion.p>
           
           <motion.div

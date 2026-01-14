@@ -127,8 +127,8 @@ const About = () => {
                 className="rounded-lg shadow-elegant w-full max-w-md mx-auto"
               />
               <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-accent text-accent-foreground p-4 md:p-6 rounded-lg shadow-gold">
-                <p className="font-serif font-bold text-lg md:text-xl">Chef & Founder</p>
-                <p className="text-sm opacity-90">A.R FOODS</p>
+                <p className="font-serif font-bold text-lg md:text-xl">Chef & Founder of A.R FOODS</p>
+                <p className="text-sm opacity-90">CHEF ARJUN</p>
               </div>
             </motion.div>
 
