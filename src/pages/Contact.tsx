@@ -162,6 +162,7 @@ const Contact = () => {
 "Global & Premium Cuisine Consulting",
 "Restaurant Photoshoot & Food Photography",
 "Brand Positioning & Online Presence",
+"Others",
 
 
                     ].map((service) => (

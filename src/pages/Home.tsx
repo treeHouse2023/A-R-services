@@ -5,10 +5,10 @@ import HeroSection from "@/components/HeroSection";
 import StatsSection from "@/components/StatsSection";
 import ServiceCard from "@/components/ServiceCard";
 import ProjectCard from "@/components/ProjectCard";
+import projectRestaurant5 from "@/assets/Restaurants/brewman coffee.jpg";
+import projectRestaurant18 from "@/assets/Restaurants/Coffee Culture (Cafe).jpg";
+import projectRestaurant11 from "@/assets/Restaurants/panagota 1.jpg";
 import SectionHeading from "@/components/SectionHeading";
-
-import projectCafe from "@/assets/project-cafe.jpg";
-import projectHotel from "@/assets/project-hotel.jpg";
 import projectRestaurant from "@/assets/project-restaurant.jpg";
 
 const services = [
@@ -45,26 +45,26 @@ const services = [
 ];
 
 const featuredProjects = [
+
   {
-    image: projectRestaurant,
-    name: "The Golden Fork",
-    location: "Mumbai, Maharashtra",
-    type: "Fine Dining",
+    image: projectRestaurant18,
+    name: "Caffee Culture",
+    location: "Ludhiana, Punjab",
+    type: "Cafe",
+    role: "Complete F&B",
+  }, {
+   image: projectRestaurant5,
+    name: "Brew man Coffee",
+    location: "Jalandhar, Punjab",
+    type: "Cafe",
     role: "Full Setup",
   },
   {
-    image: projectCafe,
-    name: "Brew & Bean Café",
-    location: "Bangalore, Karnataka",
-    type: "Premium Café",
-    role: "Menu & SOP",
-  },
-  {
-    image: projectHotel,
-    name: "Grand Orchid Hotel",
-    location: "Delhi NCR",
-    type: "Hotel Kitchen",
-    role: "Kitchen Planning",
+    image: projectRestaurant11,
+    name: "panagotas",
+    location: "Chandigarh, Punjab",
+    type: "Cafe cum Restaurant",
+    role: "Complete F&B",
   },
 ];
 

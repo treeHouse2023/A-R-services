@@ -12,7 +12,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="A.R Foods Logo"
-              className="w-[80px] h-[80px] object-contain"
+              className="w-[150px] h-[105px] object-contain"
             />
             <h3 className="text-2xl font-serif font-bold leading-tight">
               A.R <span className="text-accent">FOODS</span>

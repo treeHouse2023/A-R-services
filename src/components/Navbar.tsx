@@ -26,12 +26,14 @@ const Navbar = () => {
   to="/"
   className="flex items-center gap-3"
 >
-  {/* Logo Image */}
-  <img
-    src={logo}
-    alt="A.R Foods Logo"
-    className="w-12 h-12 object-contain mt-1 mr-1"
-  />
+<img
+  src={logo}
+  alt="A.R Foods Logo"
+  className="w-[85px] h-[85px] object-contain mr-1.5"
+ />
+
+
+
 
   {/* Brand Text */}
   <div className="flex flex-col leading-none text-center">
