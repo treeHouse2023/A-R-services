@@ -190,6 +190,29 @@ const Projects = () => {
 
   return (
     <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 bg-gradient-cream">
+        <div className="container mx-auto container-padding">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <p className="text-accent font-medium tracking-widest text-sm uppercase mb-4">
+              Our Portfolio
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
+              Projects That <span className="text-gradient-gold">Inspire</span>
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Explore our portfolio of successful restaurant, café, and hotel
+              kitchen projects across India.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Projects Grid */}
       <section className="section-padding">
         <div className="container mx-auto container-padding">
@@ -252,11 +275,7 @@ const Projects = () => {
                     key={`${item.name}-${i}`}
                     onMouseEnter={() => controls.stop()}
                     whileHover={{ scale: 1.05, y: -10 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 18,
-                    }}
+                    transition={{ type: "spring", stiffness: 200, damping: 18 }}
                     className="min-w-[320px] md:min-w-[420px] bg-card p-8 md:p-10 rounded-lg shadow-elegant text-center cursor-pointer"
                   >
                     <p className="text-lg md:text-xl font-serif mb-6">
