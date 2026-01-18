@@ -177,7 +177,7 @@ const Projects = () => {
     controls.start({
       x: "-100%",
       transition: {
-        duration: 45,
+        duration: 20,
         ease: "linear",
         repeat: Infinity,
       },

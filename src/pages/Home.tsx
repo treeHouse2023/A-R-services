@@ -10,7 +10,6 @@ import projectRestaurant18 from "@/assets/Restaurants/Coffee Culture (Cafe).jpg"
 import projectRestaurant11 from "@/assets/Restaurants/panagota 1.jpg";
 import SectionHeading from "@/components/SectionHeading";
 import projectRestaurant from "@/assets/project-restaurant.jpg";
-
 const services = [
   {
     icon: UtensilsCrossed,
@@ -43,7 +42,6 @@ const services = [
     description: "Continuous support before, during, and after your launch.",
   },
 ];
-
 const featuredProjects = [
 
   {
@@ -67,13 +65,11 @@ const featuredProjects = [
     role: "Complete F&B",
   },
 ];
-
 const Home = () => {
   return (
     <>
       {/* Hero */}
       <HeroSection />
-
       {/* About Snapshot */}
       <section className="section-padding bg-gradient-cream">
         <div className="container mx-auto container-padding">
@@ -132,7 +128,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Services Overview */}
       <section className="section-padding">
         <div className="container mx-auto container-padding">
@@ -141,13 +136,11 @@ const Home = () => {
             title="Comprehensive Hospitality Solutions"
             description="From concept to launch, we provide end-to-end consultancy services tailored to your unique vision."
           />
-          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <ServiceCard key={service.title} {...service} index={index} />
             ))}
           </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -164,10 +157,8 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-
       {/* Stats */}
       <StatsSection />
-
       {/* Featured Projects */}
       <section className="section-padding bg-secondary">
         <div className="container mx-auto container-padding">
@@ -175,14 +166,12 @@ const Home = () => {
             subtitle="Our Work"
             title="Featured Projects"
             description="Explore some of our successful restaurant and hospitality projects across India."
-          />
-          
+          />       
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredProjects.map((project, index) => (
               <ProjectCard key={project.name} {...project} index={index} />
             ))}
           </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -199,7 +188,91 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+{/* Client Brands Section */}
+<section className="pt-12 pb-24 bg-secondary overflow-hidden">
+  <div className="container mx-auto container-padding">
+    {/* Heading (reused style from Featured Projects) */}
+    <SectionHeading
+      subtitle="Our Clients"
+      title="Brands We’ve Worked With"
+      description="Proudly partnering with leading restaurants, cafés, and hospitality brands across India."
+    />
+    {/* Logos Marquee */}
+    <div className="mt-16 space-y-16">
+      {/* ROW 1 — Right to Left */}
+      <motion.div
+        className="flex items-center gap-12"
+        animate={{ x: [0, -2600] }}
+        transition={{
+          duration: 22,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+      >
+        {[
+          "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
+          "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
+          "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
+          "logo16.png","logo17.png",
+          // duplicate for seamless loop
+          "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
+          "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
+          "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
+          "logo16.png","logo17.png",
+        ].map((logo, i) => (
+          <div
+            key={`row1-${i}`}
+            className="w-40 h-40 md:w-44 md:h-44 rounded-full bg-[#b25a32] flex items-center justify-center shadow-lg shrink-0"
+          >
+            <img
+              src={`/logos/${logo}`}
+              alt="Client Logo"
+              className="w-[80%] h-[80%] object-contain"
+            />
+          </div>
+        ))}
+      </motion.div>
 
+      {/* ROW 2 — Left to Right */}
+      <motion.div
+        className="flex items-center gap-12"
+        animate={{ x: [-2600, 0] }}
+        transition={{
+          duration: 22,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+      >
+        {[
+          ...[
+            "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
+            "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
+            "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
+            "logo16.png","logo17.png",
+          ].reverse(),
+          ...[
+            "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
+            "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
+            "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
+            "logo16.png","logo17.png",
+          ].reverse(),
+        ].map((logo, i) => (
+          <div
+            key={`row2-${i}`}
+            className="w-40 h-40 md:w-44 md:h-44 rounded-full bg-[#b25a32] flex items-center justify-center shadow-md shrink-0 opacity-95"
+          >
+            <img
+              src={`/logos/${logo}`}
+              alt="Client Logo"
+              className="w-[80%] h-[80%] object-contain"
+            />
+          </div>
+        ))}
+      </motion.div>
+
+    </div>
+  </div>
+</section>
       {/* CTA Section */}
       <section className="section-padding bg-primary">
         <div className="container mx-auto container-padding text-center">
