@@ -91,7 +91,7 @@ const Home = () => {
               </p>
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
-                  <p className="text-3xl font-serif font-bold text-accent">10+</p>
+                  <p className="text-3xl font-serif font-bold text-accent">8+</p>
                   <p className="text-muted-foreground text-sm">Years of Excellence</p>
                 </div>
                 <div>
