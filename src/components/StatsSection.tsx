@@ -3,61 +3,74 @@ import indiaMap from "@/assets/India Map.png";
 
 const stats = [
   { value: "50+", label: "Projects Launched" },
-  { value: "25+", label: "Cities Covered" },
-  { value: "40+", label: "Cafés & Restaurants" },
-  { value: "23+", label: "Hotels" },
+  { value: "45+", label: "Districts Covered" },
+  { value: "45+", label: "Cafés & Restaurants" },
+  { value: "15+", label: "Hotels" },
   { value: "96%", label: "Success Rate" },
-  { value: "12+", label: "Years Experience" },
+  { value: "8+", label: "Years Experience" },
 ];
 
-
+/**
+  * Coordinates for dots on the map (as percentages)
+ */
 const mapDots = [
-   { top: "29%", left: "23%" },
-  { top: "28%", left: "24%" },
-  { top: "27%", left: "23%" },
-  { top: "27%", left: "20%" },
-  { top: "30%", left: "20%" },
-  { top: "30%", left: "21%" },
-  { top: "31%", left: "23%" },
-  { top: "31%", left: "20%" },
-  { top: "30%", left: "21%" },
+ 
+  { x: 27.2, y: 28.6 }, 
+  { x: 28.0, y: 28.0 }, 
+  { x: 29.0, y: 29.6 }, 
+  { x: 30.0, y: 30.6 }, 
+  { x: 31.0, y: 32.2 }, 
+  { x: 28.6, y: 32.0 },
+  { x: 29.6, y: 31.2 }, 
+  { x: 27.8, y: 30.8 }, 
+  { x: 31.6, y: 29.4 }, 
+  { x: 28.8, y: 22.2 }, 
+  { x: 28.8, y: 18.2 },   
+  { x: 32.8, y: 35.8 },
+  { x: 31.4, y: 25.2 }, 
 ];
-
 const StatsSection = () => {
   return (
-    <section className="pt-1 pb-12 bg-primary text-primary-foreground">
+    <section className="pt-4 pb-16 bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
 
-          {/* MAP WITH DOTS */}
+          {/* MAP */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative flex justify-start"
+            className="relative w-full max-w-[520px]"
           >
-            {/* MAP IMAGE */}
-            <img
-              src={indiaMap}
-              alt="India Coverage Map"
-              className="w-full max-w-[520px] object-contain"
-            />
+            {/* Aspect ratio wrapper */}
+            <div className="relative w-full aspect-[3/4]">
+              {/* Map Image */}
+              <img
+                src={indiaMap}
+                alt="India Coverage Map"
+                className="absolute inset-0 w-full h-full object-contain"
+              />
 
-            {/* GOLD DOTS */}
-            {mapDots.map((dot, index) => (
-              <span
-                key={index}
-                className="absolute w-2.5 h-2.5 rounded-full bg-accent"
-                style={{ top: dot.top, left: dot.left }}
-              >
-                {/* Glow */}
-                <span className="absolute inset-0 rounded-full bg-accent opacity-60 blur-md animate-pulse" />
-              </span>
-            ))}
+              {/* Dots */}
+              {mapDots.map((dot, index) => (
+                <span
+                  key={index}
+                  className="absolute w-2.5 h-2.5 rounded-full bg-accent"
+                  style={{
+                    left: `${dot.x}%`,
+                    top: `${dot.y}%`,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  {/* Glow */}
+                  <span className="absolute inset-0 rounded-full bg-accent opacity-60 blur-md animate-pulse" />
+                </span>
+              ))}
+            </div>
           </motion.div>
 
-          {/* STATS + HEADING */}
+          {/* TEXT + STATS */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -66,7 +79,7 @@ const StatsSection = () => {
               transition={{ duration: 0.5 }}
               className="mb-6"
             >
-              <p className="text-accent uppercase tracking-widest text-sm md:text-base mb-3">
+              <p className="text-accent uppercase tracking-widest text-sm mb-3">
                 Our Reach
               </p>
 
@@ -74,13 +87,12 @@ const StatsSection = () => {
                 Where We Are
               </h3>
 
-              <p className="text-primary-foreground/60 text-base md:text-lg leading-relaxed max-w-md">
+              <p className="text-primary-foreground/60 text-lg max-w-md">
                 Delivering premium hospitality and culinary solutions across
                 multiple cities and formats in India.
               </p>
             </motion.div>
 
-            {/* STATS GRID */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
               {stats.map((stat, i) => (
                 <motion.div

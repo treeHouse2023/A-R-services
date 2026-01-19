@@ -57,7 +57,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-accent" />
-                <span>contact@arfoods.in</span>
+                <span>arjunryankumar@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-accent mt-0.5" />

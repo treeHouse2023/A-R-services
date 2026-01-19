@@ -26,6 +26,8 @@ import projectRestaurant15 from "@/assets/Restaurants/Amber resturant and Sweat 
 import projectRestaurant16 from "@/assets/Restaurants/falvoraista 2.jpg";
 import projectRestaurant17 from "@/assets/Restaurants/East Punjab 1.jpg";
 import projectRestaurant18 from "@/assets/Restaurants/Coffee Culture (Cafe).jpg";
+import projectRestaurant19 from "@/assets/Restaurants/Amigos.jpg";
+
 
 const projects = [
   {
@@ -51,7 +53,7 @@ const projects = [
   },
   {
     image: projectRestaurant2,
-    name: "Reffer Cafe",
+    name: "The Reffer Cafe",
     location: "Jalandhar, Punjab",
     type: "Cafe",
     role: "Full Setup",
@@ -93,14 +95,14 @@ const projects = [
   },
   {
     image: projectRestaurant8,
-    name: "Tummy Drive",
+    name: "Tummy's Drive",
     location: "Jalandhar, Punjab",
     type: "Premium QSR",
     role: "Full Setup",
   },
   {
     image: projectRestaurant9,
-    name: "Butcher Grill",
+    name: "The Butcher Grill",
     location: "Jalandhar, Punjab",
     type: "QSR Outlet",
     role: "Menu & Training",
@@ -114,7 +116,7 @@ const projects = [
   },
   {
     image: projectRestaurant11,
-    name: "Panagotas",
+    name: "Pannacottas",
     location: "Chandigarh, Punjab",
     type: "Cafe cum Restaurant",
     role: "Complete F&B",
@@ -128,14 +130,14 @@ const projects = [
   },
   {
     image: projectRestaurant13,
-    name: "Dahan",
+    name: "Danah",
     location: "Amritsar, Punjab",
-    type: "Cafe",
+    type: "Premium Cafe",
     role: "Complete F&B",
   },
   {
     image: projectRestaurant14,
-    name: "La Rowan Pizzaria",
+    name: "La Roma Pizzeria",
     location: "Amritsar, Punjab",
     type: "Premium Cafe",
     role: "Full Setup",
@@ -149,7 +151,7 @@ const projects = [
   },
   {
     image: projectRestaurant16,
-    name: "Flavorrista",
+    name: "Flavorishta",
     location: "Tanda, Punjab",
     type: "Premium Restaurant",
     role: "Complete F&B",
@@ -158,14 +160,21 @@ const projects = [
     image: projectRestaurant17,
     name: "East Punjab",
     location: "Tanda, Punjab",
-    type: "Cafe & Restaurant",
-    role: "Complete F&B",
+    type: "Cafe & Bakery",
+    role: "Complete Setup",
+  },
+   {
+    image: projectRestaurant19,
+    name: "Amigo's Foods & Hospitalities",
+    location: "Srinagar, Jammu and Kashmir",
+    type: "Premium restaurant & cafe",
+    role: "Complete Setup",
   },
   {
     image: projectRestaurant18,
-    name: "Coffee Culture",
+    name: "The Coffee Culture",
     location: "Ludhiana, Punjab",
-    type: "Cafe",
+    type: "Cafe and restro",
     role: "Complete F&B",
   },
 ];

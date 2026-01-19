@@ -46,10 +46,10 @@ const featuredProjects = [
 
   {
     image: projectRestaurant18,
-    name: "Caffee Culture",
+    name: "The Coffee Culture",
     location: "Ludhiana, Punjab",
-    type: "Cafe",
-    role: "Complete F&B",
+    type: "Cafe and Bakery",
+    role: "Complete Setup",
   }, {
    image: projectRestaurant5,
     name: "Brew man Coffee",
@@ -59,7 +59,7 @@ const featuredProjects = [
   },
   {
     image: projectRestaurant11,
-    name: "panagotas",
+    name: "Pannacottas",
     location: "Chandigarh, Punjab",
     type: "Cafe cum Restaurant",
     role: "Complete F&B",
@@ -213,12 +213,12 @@ const Home = () => {
           "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
           "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
           "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
-          "logo16.png","logo17.png",
-          // duplicate for seamless loop
+          "logo16.png","logo17.png","logo18.png",
+          
           "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
           "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
           "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
-          "logo16.png","logo17.png",
+          "logo16.png","logo17.png","logo18.png",
         ].map((logo, i) => (
           <div
             key={`row1-${i}`}
@@ -248,13 +248,13 @@ const Home = () => {
             "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
             "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
             "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
-            "logo16.png","logo17.png",
+            "logo16.png","logo17.png","logo18.png",
           ].reverse(),
           ...[
             "logo1.png","logo2.png","logo3.png","logo4.png","logo5.png",
             "logo6.png","logo7.png","logo8.png","logo9.png","logo10.png",
             "logo11.png","logo12.png","logo13.png","logo14.png","logo15.png",
-            "logo16.png","logo17.png",
+            "logo16.png","logo17.png","logo18.png",
           ].reverse(),
         ].map((logo, i) => (
           <div

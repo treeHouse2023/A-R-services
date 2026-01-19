@@ -12,6 +12,8 @@ import {
 import SectionHeading from "@/components/SectionHeading";
 import { useToast } from "@/hooks/use-toast";
 
+const ACCESS_KEY = "cc861593-7006-4580-9fba-c7071cd17bc7";
+
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,26 +51,59 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const formPayload = new FormData();
+      formPayload.append("access_key", ACCESS_KEY);
+      formPayload.append("name", formData.name);
+      formPayload.append("email", formData.email);
+      formPayload.append("phone", formData.phone);
+      formPayload.append(
+        "serviceType",
+        formData.serviceType.join(", ")
+      );
+      formPayload.append(
+        "contactMethod",
+        formData.contactMethod.join(", ")
+      );
+      formPayload.append("message", formData.message);
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formPayload,
+      });
 
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
+      const data = await response.json();
 
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      serviceType: [],
-      contactMethod: [],
-      message: "",
-    });
+      if (data.success) {
+        setIsSubmitted(true);
 
-    setTimeout(() => setIsSubmitted(false), 3000);
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          serviceType: [],
+          contactMethod: [],
+          message: "",
+        });
+
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -119,7 +154,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="Full Name"
-                  className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-accent"
+                  className="w-full px-4 py-3 border rounded-md"
                 />
 
                 <div className="grid sm:grid-cols-2 gap-6">
@@ -129,54 +164,47 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     placeholder="Phone Number"
-                    className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 border rounded-md"
                   />
                   <input
                     name="email"
+                    type="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
                     placeholder="Email Address"
-                    className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 border rounded-md"
                   />
                 </div>
 
-                {/* Service Type */}
+                {/* Services */}
                 <div>
-                  <p className="font-medium mb-3">
-                    Kindly select the service type
-                  </p>
+                  <p className="font-medium mb-3">Service Type</p>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {[
-                     "Premium Café Opening",
-"Restaurant Setup",
-"Kitchen Consultancy",
-"QSR Opening",
-"Hotel Kitchen Consultancy",
-"Menu Planning & Costing",
-"Recipe Development & Food Trials",
-"SOP Creation",
-"Staff Hiring & Training",
-"Pre-opening Support",
-"Post-opening Support",
-"Global & Premium Cuisine Consulting",
-"Restaurant Photoshoot & Food Photography",
-"Brand Positioning & Online Presence",
-"Others",
-
-
+                      "Premium Café Opening",
+                      "Restaurant Setup",
+                      "Kitchen Consultancy",
+                      "QSR Opening",
+                      "Hotel Kitchen Consultancy",
+                      "Menu Planning & Costing",
+                      "Recipe Development & Food Trials",
+                      "SOP Creation",
+                      "Staff Hiring & Training",
+                      "Pre-opening Support",
+                      "Post-opening Support",
+                      "Global & Premium Cuisine Consulting",
+                      "Restaurant Photoshoot & Food Photography",
+                      "Brand Positioning & Online Presence",
+                      "Others",
                     ].map((service) => (
-                      <label
-                        key={service}
-                        className="flex items-center gap-2 text-sm"
-                      >
+                      <label key={service} className="flex items-center gap-2">
                         <input
                           type="checkbox"
                           checked={formData.serviceType.includes(service)}
                           onChange={() =>
                             handleCheckboxChange("serviceType", service)
                           }
-                          className="accent-accent"
                         />
                         {service}
                       </label>
@@ -186,22 +214,16 @@ const Contact = () => {
 
                 {/* Contact Method */}
                 <div>
-                  <p className="font-medium mb-3">
-                    Preferred Contact Method 
-                  </p>
+                  <p className="font-medium mb-3">Preferred Contact Method</p>
                   <div className="flex gap-6">
                     {["Email", "Call", "Text"].map((method) => (
-                      <label
-                        key={method}
-                        className="flex items-center gap-2 text-sm"
-                      >
+                      <label key={method} className="flex items-center gap-2">
                         <input
                           type="checkbox"
                           checked={formData.contactMethod.includes(method)}
                           onChange={() =>
                             handleCheckboxChange("contactMethod", method)
                           }
-                          className="accent-accent"
                         />
                         {method}
                       </label>
@@ -214,32 +236,42 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  placeholder="Additional details (optional)"
-                  className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-accent resize-none"
+                  placeholder="Additional details"
+                  className="w-full px-4 py-3 border rounded-md"
                 />
 
                 <button
-                  type="submit"
-                  disabled={isSubmitting || isSubmitted}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : isSubmitted ? (
-                    <>
-                      <CheckCircle size={18} />
-                      Message Sent!
-                    </>
-                  ) : (
-                    <>
-                      <Send size={18} />
-                      Send Message
-                    </>
-                  )}
-                </button>
+  type="submit"
+  disabled={isSubmitting || isSubmitted}
+  className="
+    inline-flex items-center gap-3
+    px-10 py-4
+    rounded-xl
+    bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a]
+    text-white font-semibold
+    shadow-lg
+    hover:from-black hover:to-[#1f1f1f]
+    transition-all duration-300
+    disabled:opacity-60 disabled:cursor-not-allowed
+  "
+>
+  {isSubmitting ? (
+    <>
+      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+      Sending...
+    </>
+  ) : isSubmitted ? (
+    <>
+      <CheckCircle size={18} />
+      Message Sent
+    </>
+  ) : (
+    <>
+      <Send size={18} />
+      Send Message
+    </>
+  )}
+</button>
               </form>
             </motion.div>
 
@@ -260,15 +292,13 @@ const Contact = () => {
                 {[
                   { icon: Phone, text: "+91 98781 02714" },
                   { icon: MessageCircle, text: "+91 98781 02714" },
-                  { icon: Mail, text: "contact@arfoods.in" },
+                  { icon: Mail, text: "arjunryankumar@gmail.com" },
                   { icon: Instagram, text: "@arjuncheff" },
                   { icon: MapPin, text: "Pan India Operations" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <item.icon className="w-5 h-5 text-accent" />
-                    </div>
-                    <span className="text-muted-foreground">{item.text}</span>
+                    <item.icon className="w-5 h-5 text-accent" />
+                    <span>{item.text}</span>
                   </div>
                 ))}
               </div>
